@@ -1,0 +1,62 @@
+# Nuclear Material Agent 配置文件
+
+# LLM 配置 (使用环境变量或输入API Key)
+llm:
+  minimax:
+    model: "MiniMax-M2.5"
+    api_key: "${MINIMAX_API_KEY}"
+    base_url: "https://api.minimaxi.com/v1"
+    enable_reasoning_split: true  # 开启思考内容分离
+  
+  deepseek:
+    model: "deepseek-chat"
+    api_key: "${DEEPSEEK_API_KEY}"
+    base_url: "https://api.deepseek.com"
+  
+  ollama:
+    model: "qwen2.5:1.5b-instruct-q4_K_S"
+    base_url: "http://127.0.0.1:11434"
+  
+  zhipu:
+    model: "glm-4"
+    api_key: "${ZHIPU_API_KEY}"
+    base_url: "https://open.bigmodel.cn"
+
+# Embedding 配置
+embedding:
+  provider: "ollama"
+  model: "bge-m3:latest"
+  host: "http://127.0.0.1:11434"
+  dimension: 1024
+
+# RAG 配置 (使用相对于项目根目录的路径)
+rag:
+  working_dir: "./myKG"
+  top_k: 10
+  enable_rerank: false
+
+# 知识图谱配置
+knowledge_graph:
+  neo4j_url: "bolt://localhost:7687"
+  neo4j_username: "neo4j"
+  neo4j_password: "password"
+  database: "neo4j"
+
+# MongoDB 配置
+mongodb:
+  url: "mongodb://localhost:27017"
+  database: "nuclear_materials"
+
+# Agent 配置
+agent:
+  max_iterations: 10
+  enable_human_feedback: true
+  enable_self_reflection: true
+  enable_knowledge_update: true
+  temperature: 1.0  # MiniMax 推荐使用 1.0
+  max_tokens: 4096
+
+# 微调模型配置 (使用相对于项目根目录的路径)
+fine_tuned:
+  enabled: false  # 默认关闭，需要手动启用并配置模型路径
+  model_path: "./src/fine_tuning/output/nuclear_sft_dapt_swift_fast/v0-20260310-114209/merged_model"

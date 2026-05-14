@@ -1,0 +1,89 @@
+# 原始配置（保留用于其他项目）
+neo4j_original:
+  url: "bolt://localhost:7687"
+  username: "neo4j"
+  database: "neo4j"
+  password: "yourStrongPassword123"  # 确保与实际Neo4j密码一致
+  batch_size_nodes: 500
+  batch_size_edges: 100
+mongo_original:
+  url: "mongodb://root:root@localhost:27017/"
+  database: "mech"
+milvus_original:
+  url: "http://localhost:19530"
+  username: "root"
+  password: "Milvus"
+  database: "bgem3"
+
+# ZYX_DB配置（专为此项目使用，避免与其他项目冲突）
+neo4j:
+  url: "bolt://localhost:7687"
+  username: "neo4j"
+  database: "ZYX_DB"  # 使用专用数据库名称
+  password: "ZYX_Neo4j_123"  # 专用密码
+  batch_size_nodes: 500
+  batch_size_edges: 100
+mongo:
+  url: "mongodb://localhost:27017/"  # 无认证连接，避免认证问题
+  database: "ZYX_DB"  # 使用专用数据库名称
+milvus:
+  url: "http://localhost:19530"
+  username: "root"
+  password: "Milvus"
+  database: "ZYX_DB"  # 使用专用数据库名称
+MATLAB:
+  script_path: "/home/shangqing/sqdata/mechpy/src/fem/homogenization"
+llm:
+  ollama:
+    base_url: "http://127.0.0.1:11434/api/"
+    api_key: "${OLLAMA_API_KEY}"
+    model: "qwen2.5:72b"
+    vl_model: "qwen3-vl:7b"
+    embed_model: "bge-m3:latest"
+    rerank_model: "test"
+  zhipu:
+    base_url: "https://open.bigmodel.cn/api/paas/v4/"
+    api_key: "${ZHIPU_API_KEY}"
+    model: "glm-4-flash-250414"
+    vl_model: "glm-4-vl-flash"
+    embed_model: "embedding-3"
+    rerank_model: "test"
+  deepseek:
+    base_url: "https://api.deepseek.com/v1/"
+    api_key: "${DEEPSEEK_API_KEY}"
+    model: "deepseek-chat"
+    vl_model: ""
+    embed_model: ""
+    rerank_model: "test"
+  minimax:
+    base_url: "https://api.minimax.chat/v1"
+    api_key: "${MINIMAX_API_KEY}"
+    model: "abab6.5s-chat"
+    vl_model: ""
+    embed_model: ""
+    rerank_model: ""
+  flagembed:
+    base_url: "http://127.0.0.1:7575"
+    api_key: "${FLAG_EMBED_API_KEY}"
+    rerank_model: "bge-reranker-v2-m3"
+  siliconflow:
+    base_url: "https://api.siliconflow.cn/v1"
+    api_key: "${SILICONFLOW_API_KEY}"
+    model: ""
+    vl_model: "glm-4-vl-flash"
+    embed_model: "BAAI/bge-m3"
+    rerank_model: "BAAI/bge-reranker-v2-m3"
+  xinference:
+    base_url: "http://localhost:9997"
+    api_key: "${XINFERENCE_API_KEY}"
+    model: ""
+    vl_model: "glm-4-vl-flash"
+    embed_model: "bge-m3"
+    rerank_model: "bge-reranker-v2-m3"
+
+rag:
+  top_k: 50
+  Q2K: false
+
+logger:
+  level: "INFO"
